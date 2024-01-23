@@ -1,0 +1,12 @@
+{% block title %}Load Data Form{% endblock %}
+
+{% block content %}
+{% if message in messages %}
+    <p>{{ message }}</p>
+{% endif %}
+<form action="" method="post" enctype="multipart/form-data" novalidate>
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Load">
+</form>
+{% endblock %}
