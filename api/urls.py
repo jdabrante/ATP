@@ -4,6 +4,7 @@ from . import views
 app_name = 'api'
 
 urlpatterns = [
+    path('matches/ai/', )
     path('players/', views.PlayerListView.as_view(), name='api_player_list'),
     path('players/<pk>/', views.PlayerDetailView.as_view(), name='api_player_detail'),
     path('matches/', views.MatchListView.as_view(), name='api_match_list'),
