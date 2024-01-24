@@ -9,8 +9,8 @@ class Matches(models.Model):
     match_round = models.CharField(max_length=200)
     duration = models.IntegerField()
     winner = models.ForeignKey(
-        Player, on_delete=models.CASCADE, related_name='win_matches', blank=True
+        Player, on_delete=models.CASCADE, related_name='win_matches', blank=True, null=True
     )
     loser = models.ForeignKey(
-        Player, on_delete=models.CASCADE, related_name='lose_matches', blank=True
+        Player, on_delete=models.CASCADE, related_name='lose_matches', blank=True, null=True
     )
