@@ -7,7 +7,6 @@ from rest_framework.views import APIView
 from matches.models import Matches
 from players.models import Player
 
-from .forms import MatchAI
 from .serializers import MatchesSerializer, PlayerSerializer
 
 
@@ -45,19 +44,3 @@ class MatchesLoserView(APIView):
     def get(self, request, pk, format=None):
         match = get_object_or_404(Matches, pk=pk)
         return Response(PlayerSerializer(match.loser).data)
-
-
-@csrf_exempt
-def create_lore(request):
-    if request.method == 'POST':
-        form = MatchAI(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            tournament = cd['matches'].tournament
-            winner = cd['matches'].winner.name
-            loser = cd['matches'].loser.name
-            message = (
-                f'What happened in the tournament {tournament} where {winner} and {loser} played'
-            )
-    else:
-        form = MatchAI()
